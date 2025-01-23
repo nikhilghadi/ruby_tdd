@@ -9,6 +9,7 @@ class StringCalculator
     numbers.gsub!(delimiter,',')
     numbers = numbers.split(",").map(&:to_i)
 
+    #validation for negative numbers
     validate_numbers(numbers)
    
     # initializing sum with 0 for inject method for of single number in string

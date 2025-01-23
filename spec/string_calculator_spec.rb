@@ -83,5 +83,20 @@ RSpec.describe StringCalculator do
     end
   end
   
-  
+  context "Testing for some advance usecases" do 
+    it "should return 79 for 1,6,8,3,6,9,14,12,2,19" do 
+      calculator = StringCalculator.new
+      expect(calculator.add("1,6,8,3,6,9,14,12,2,19")).to eq(80)
+    end
+
+    it "should return 79 for 1,6\n8,6,6,9\n14,2,2,19" do 
+      calculator = StringCalculator.new
+      expect(calculator.add(" 1,6\n8,6,6,9\n14,2,2,19")).to eq(73)
+    end
+
+    it "should return 79 for //^\n1^6\n8^6^6^9\n14^2^2^19" do 
+      calculator = StringCalculator.new
+      expect(calculator.add("//^\n1^6\n8^6^6^9\n14^2^2^19")).to eq(73)
+    end
+  end
 end
