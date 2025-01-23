@@ -53,5 +53,23 @@ RSpec.describe StringCalculator do
       expect(calculator.add("1,3\n,2,\n1,1")).to eq(8)
     end
   end
+
+  context "Testing with different delimiter" do
+    it "should return 0 for //;\n" do 
+      calculator = StringCalculator.new
+      expect(calculator.add("//;\n")).to eq(0)
+    end
+
+    it "should return 3 for //;\n1;2" do 
+      calculator = StringCalculator.new
+      expect(calculator.add("//;\n1;2")).to eq(3)
+    end
+
+    it "should return 6 for //*\n1*2*3" do 
+      calculator = StringCalculator.new
+      expect(calculator.add("//*\n1*2*3")).to eq(6)
+    end
+  end
+  
   
 end
