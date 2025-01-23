@@ -7,9 +7,19 @@ class StringCalculator
 
     delimiter = getDelimeter(numbers)
     numbers.gsub!(delimiter,',')
+    numbers = numbers.split(",").map(&:to_i)
 
+    validate_numbers(numbers)
+   
     # initializing sum with 0 for inject method for of single number in string
-    numbers.split(",").inject(0){|sum,number| sum.to_i + number.to_i}
+    numbers.inject(0){|sum,number| sum + number}
+  end
+
+  def validate_numbers(numbers)
+    negative_numbers =numbers.select{|n| n < 0}
+    unless negative_numbers.empty?
+      raise "negative numbers not allowed #{negative_numbers.join(', ')}"
+    end
   end
 
   def getDelimeter(numbers)

@@ -70,6 +70,18 @@ RSpec.describe StringCalculator do
       expect(calculator.add("//*\n1*2*3")).to eq(6)
     end
   end
+
+  context "Adding validation for negative numbers" do
+    it "should raise an exception for -1" do
+      calculator = StringCalculator.new
+      expect{calculator.add("-1")}.to  raise_error("negative numbers not allowed -1")
+    end
+
+    it "should raise an exception for -1,5,8, -2,7 -4" do
+      calculator = StringCalculator.new
+      expect{calculator.add("-1,5,8, -2,7\n-4")}.to  raise_error("negative numbers not allowed -1, -2, -4")
+    end
+  end
   
   
 end
