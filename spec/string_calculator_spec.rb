@@ -37,4 +37,21 @@ RSpec.describe StringCalculator do
     end
   end
   
+  context "testing new line in string " do
+    it "Should return 0 for \n" do
+      calculator = StringCalculator.new
+      expect(calculator.add("\n")).to eq(0)
+    end
+
+    it "Should return 6 for 1\n2,3" do 
+      calculator = StringCalculator.new
+      expect(calculator.add("1\n2,3")).to eq(6)
+    end
+
+    it "should return 8 for 1,3\n,2,\n1,1" do
+      calculator = StringCalculator.new
+      expect(calculator.add("1,3\n,2,\n1,1")).to eq(8)
+    end
+  end
+  
 end
